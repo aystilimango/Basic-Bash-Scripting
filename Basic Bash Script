@@ -1,0 +1,33 @@
+// shebang=#!/bin/bash Every bash shell script  starts with shebang:"#!" 
+// chmod +x scriptname.sh-> once you write the script and name it, you have to gıve the executıon permisson(x)for this file
+// To run the script,you have to  type "./scriptname.sh" to the terminal
+       /* id - print real and effective user and group IDs
+       -u, --user: print only the effective user ID(I take this notes from the man page of the "id")
+
+first of all ı want to stop the script if its not root,and the root is always uid == 0. */
+
+#!/bin/bash
+# this script only run if the user is root!
+if [[ $(id -u) != "0" ]]; then
+    echo "Error: This script can only  be run by root! Exiting..."
+    exit 1
+fi
+
+# We use the variables with $ sign
+user=$(whoami)
+talking="Hello"
+echo "$talking  $user,you are using this bash: $BASH_VERSION."
+
+#We use read command to take input from user and ge means:bigger or equal
+echo "How old are you?"
+read age
+if [ "$age" -ge 18 ]
+then
+    echo "You reach the lawful age."
+else 
+    echo "You dont reach the lawful age."
+fi
+
+
+
+
